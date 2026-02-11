@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тема</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #0e1118;
+            color: #ffffff;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 40px;
+            background: #0f1118;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .header .back-btn {
+            position: absolute;
+            left: 40px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .header .back-btn:hover {
+            background-color: #3578e5;
+            box-shadow: 0 6px 14px rgba(74,108,247,0.5);
+        }
+
+        .header .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #00f0ff;
+            text-align: center;
+        }
+
+        .header .auth-block {
+            position: absolute;
+            right: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header .auth-block .auth-btn {
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .header .auth-block .auth-btn:hover {
+            background-color: #3578e5;
+            box-shadow: 0 6px 14px rgba(74,108,247,0.5);
+        }
+
+        /* Контейнер страницы */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Контент темы */
+        #topicContent {
+            background-color: #1a1f2d;
+            border-radius: 16px;
+            border: 1px solid #2c3140;
+            padding: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        #topicContent h1 {
+            color: #ffffff;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        #topicContent .description,
+        #topicContent .theory,
+        #topicContent pre {
+            background-color: #121620;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 1px solid #2c3140;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        #topicContent pre {
+            font-family: "Courier New", monospace;
+        }
+
+        /* ========================= */
+        /* Модальное окно */
+        /* ========================= */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0,0,0,0.55);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #1a1f2d;
+            color: #ffffff;
+            margin: 8% auto;
+            padding: 28px 24px;
+            border-radius: 14px;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            animation: modalFade 0.25s ease;
+        }
+
+        @keyframes modalFade {
+            from {opacity:0; transform:translateY(20px);}
+            to {opacity:1; transform:translateY(0);}
+        }
+
+        .modal-content input {
+            background-color: #121620;
+            color: #ffffff;
+            border: 1px solid #2c3140;
+            border-radius: 12px;
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 12px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .modal-content input:focus {
+            border-color: #4a90f2;
+            box-shadow: 0 0 0 3px rgba(74,144,242,0.3);
+        }
+
+        .modal-content button {
+            background-color: #4a90f2;
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            width: 100%;
+        }
+
+        .modal-content button:hover {
+            background-color: #3578e5;
+            box-shadow: 0 6px 14px rgba(74,108,247,0.5);
+        }
+
+        .close {
+            color: #a0a4b0;
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ffffff;
+        }
+
+        .modal-content p {
+            margin-top: 12px;
+        }
+
+        .modal-content p button {
+            background: none;
+            border: none;
+            color: #4a90f2;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            font-size: 15px;
+        }
+
+        .modal-content p button:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <button class="back-btn" id="backBtn">Назад</button>
+    <div class="logo">1С Помощник</div>
+    <div class="auth-block">
+        <img id="profileAvatar" src="images/default-avatar.png" alt="Аватар" class="avatar" style="display:none; width:40px; height:40px; border-radius:50%;">
+        <button class="auth-btn" id="openAuthModal">Войти</button>
+    </div>
+</header>
+
+<main class="container">
+    <div id="topicContent">
+        <h1 id="topic-title">Загрузка...</h1>
+        <div class="description" id="topic-description">Описание темы появится здесь...</div>
+        <div class="theory" id="lesson-theory">Теория урока появится здесь...</div>
+        <pre id="lesson-code">// Пример кода появится здесь...</pre>
+    </div>
+</main>
+
+<!-- Модальное окно -->
+<div id="authModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <!-- Авторизация -->
+        <div id="loginContent">
+            <h2>Авторизация</h2>
+            <form id="loginForm">
+                <input type="text" id="modalUsername" placeholder="Логин" required>
+                <input type="password" id="modalPassword" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+            <p>
+                <button type="button" id="switchToRegister">Регистрация</button>
+            </p>
+        </div>
+
+        <!-- Регистрация -->
+        <div id="registerContent" style="display: none;">
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <input type="text" id="regFirstName" placeholder="Имя" required>
+                <input type="text" id="regLastName" placeholder="Фамилия" required>
+                <input type="email" id="regEmail" placeholder="Почта" required>
+                <input type="text" id="regUsername" placeholder="Логин" required minlength="4">
+                <input type="password" id="regPassword" placeholder="Пароль" required minlength="6">
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <p>
+                <button type="button" id="switchToLogin">Войти</button>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<script src="javascript/app.js" defer></script>
+<script src="javascript/auth.js" defer></script>
+<script src="javascript/topic.js" defer></script>
+</body>
+</html>

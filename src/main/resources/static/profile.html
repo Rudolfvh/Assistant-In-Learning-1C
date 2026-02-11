@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background-color: #0e1118;
+            color: #ffffff;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 40px;
+            background: #0f1118;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .header .back-btn {
+            position: absolute;
+            left: 40px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .header .back-btn:hover {
+            background-color: #3578e5;
+            box-shadow: 0 6px 14px rgba(74,108,247,0.5);
+        }
+
+        .header .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #00f0ff;
+            text-align: center;
+        }
+
+        .header .auth-btn#logoutBtn {
+            position: absolute;
+            right: 40px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .header .auth-btn#logoutBtn:hover {
+            background-color: #3578e5;
+            box-shadow: 0 6px 14px rgba(74,108,247,0.5);
+        }
+
+        /* Основной контейнер */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        /* Блок информации профиля */
+        .profile-info {
+            background-color: #1a1f2d;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #2c3140;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Картинка аватара, если будет */
+        .profile-info img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+            border: 2px solid #4a90f2;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <button class="back-btn" id="backBtn">Назад</button>
+    <div class="logo">1С Помощник</div>
+    <button class="auth-btn" id="logoutBtn">Выйти</button>
+</header>
+
+<main class="container">
+    <h1>Профиль пользователя</h1>
+    <div id="profileInfo" class="profile-info">
+        <!-- Пример структуры профиля -->
+        <!-- <img src="../images/default-avatar.png" alt="Аватар"> -->
+        <p><strong>Имя:</strong> Иван</p>
+        <p><strong>Фамилия:</strong> Иванов</p>
+        <p><strong>Логин:</strong> ivan123</p>
+        <p><strong>Email:</strong> ivan@example.com</p>
+        <p><strong>Дата регистрации:</strong> 31.01.2026</p>
+    </div>
+</main>
+
+<script src="../javascript/profile.js"></script>
+</body>
+</html>

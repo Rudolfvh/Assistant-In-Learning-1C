@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание темы</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Контейнер страницы */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        /* Форма создания темы */
+        #createTopicForm {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background-color: #1a1f2d;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #2c3140;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Поля ввода и textarea */
+        #createTopicForm input,
+        #createTopicForm textarea {
+            background-color: #121620;
+            color: #ffffff;
+            border: 1px solid #2c3140;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 15px;
+            outline: none;
+            resize: vertical;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        #createTopicForm input:focus,
+        #createTopicForm textarea:focus {
+            border-color: #4a90f2;
+            box-shadow: 0 0 0 3px rgba(74,144,242,0.3);
+        }
+
+        /* Кнопка создать */
+        #createTopicForm button {
+            background-color: #4a90f2;
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        #createTopicForm button:hover {
+            background-color: #3578e5;
+            box-shadow: 0 6px 14px rgba(74,108,247,0.5);
+        }
+
+        #createTopicForm button:active {
+            transform: scale(0.96);
+        }
+
+        /* Стили для header (кнопка назад слева, логотип по центру, блок справа) */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 40px;
+            background: #0f1118;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .header .back-btn {
+            position: absolute;
+            left: 40px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .header .back-btn:hover {
+            background-color: #3578e5;
+            box-shadow: 0 6px 14px rgba(74,108,247,0.5);
+        }
+
+        .header .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #00f0ff;
+            text-align: center;
+        }
+
+        .header .auth-block {
+            position: absolute;
+            right: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Стили для textarea, чтобы минимальная высота была удобная */
+        textarea {
+            min-height: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <button class="back-btn" id="backBtn">Назад</button>
+    <div class="logo">1С Помощник</div>
+    <div class="auth-block">
+        <img id="profileAvatar" src="images/default-avatar.png" alt="Аватар" class="avatar" style="display:none;">
+        <button class="auth-btn" id="openAuthModal">Войти</button>
+    </div>
+</header>
+
+<main class="container">
+    <h1>Создать новую тему</h1>
+    <form id="createTopicForm">
+        <input type="text" id="topicTitle" placeholder="Название темы" required>
+        <textarea id="topicDescription" placeholder="Описание темы" required></textarea>
+        <textarea id="lessonTheory" placeholder="Теория урока" required></textarea>
+        <textarea id="lessonCode" placeholder="Пример кода" required></textarea>
+        <button type="submit">Создать тему</button>
+    </form>
+</main>
+
+<script src="javascript/createTopic.js" defer></script>
+</body>
+</html>
